@@ -1,0 +1,29 @@
+$color-principal:rgb(206, 108, 206);
+$color-secundario: rgba(253, 139, 72, 0.925);
+$color-fuente: rgb(71, 70, 70);
+$borde-contenedores: 1px solid black;
+
+
+
+@mixin flex-centrar($direccion: column, $content: center) {
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: $content;
+    align-items: center;
+  }
+
+body {
+    @include flex-centrar($direccion: row)
+}
+
+.contenedor-formulario {
+    background-color: $color-secundario;
+    border: $borde-contenedores;
+    width: 300px;
+    @include flex-centrar();
+}
+
+form {
+    @include flex-centrar();
+    width: 300px;
+}
