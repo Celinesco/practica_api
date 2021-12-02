@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="contenedor-formulario">
-        <form>
+        <form id=formulario-nuevo-usuario>
             <label for="user-name">Nombre</label>
             <input type="text" id="user-name">
             <label for="user-mail">Email</label>
@@ -18,13 +18,13 @@
             <input type="number" id="user-number">
             <label for="user-address">Direccion</label>
             <input type="text" id="user-address">
-            <button type="submit">Agregar</button>
+            <button type="submit" id="boton-submit">Agregar</button>
         </form>
     </div>
     
-    <table>
+    <table id="tabla-usuarios">
         <th></th>
     </table>
-    
+    <script src="index.js"></script>
 </body>
 </html>

@@ -1,11 +1,11 @@
 body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center; }
 
 .contenedor-formulario {
-  background-color: rgba(253, 139, 72, 0.925);
+  background-color: rgba(245, 189, 157, 0.925);
   border: 1px solid black;
   width: 300px;
   display: flex;

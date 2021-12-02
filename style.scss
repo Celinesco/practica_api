@@ -1,5 +1,5 @@
 $color-principal:rgb(206, 108, 206);
-$color-secundario: rgba(253, 139, 72, 0.925);
+$color-secundario: rgba(245, 189, 157, 0.925);
 $color-fuente: rgb(71, 70, 70);
 $borde-contenedores: 1px solid black;
 
@@ -13,7 +13,7 @@ $borde-contenedores: 1px solid black;
   }
 
 body {
-    @include flex-centrar($direccion: row)
+    @include flex-centrar($direccion: column)
 }
 
 .contenedor-formulario {
