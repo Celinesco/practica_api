@@ -32,8 +32,8 @@ const tablaEnHTML = (data) => {
         <td>${element.email}</td>
         <td>${element.address}</td>
         <td>${element.phone}</td>
-        <td><button class="botones-eliminar" id="eliminar${element.id}">Eliminar</button>
-          <button class="botones-editar" id="editar${element.id}">Editar</button>
+        <td><button class="botones-eliminar acciones" id="eliminar${element.id}">Eliminar</button>
+          <button class="botones-editar acciones" id="editar${element.id}">Editar</button>
         </td>
       </tr>
       `
