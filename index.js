@@ -8,24 +8,36 @@ const tablaDeUsuarios = document.getElementById("tabla-usuarios");
 
 
 
-fetch("https://601da02bbe5f340017a19d60.mockapi.io/users")
-.then((res) => res.json())
-.then((data) => {
-  tablaEnHTML(data)
-})
+const actualizarListaBotonesEliminar = () => {
+  let listaBotonesEliminar = document.querySelectorAll(".botones-eliminar");
+  return listaBotonesEliminar
+}
+
+
+const informacionApi = () => {
+  fetch("https://601da02bbe5f340017a19d60.mockapi.io/users")
+    .then((res) => res.json())
+    .then((data) => {
+      tablaEnHTML(data)
+    })
+}
+
+
 
 const tablaEnHTML = (data) => {
-    let tabla = data.reduce((acc,element) => {
-        return acc + ` 
+  let tabla = data.reduce((acc, element) => {
+    return acc + ` 
       <tr>
         <td>${element.fullname}</td>
         <td>${element.email}</td>
         <td>${element.address}</td>
         <td>${element.phone}</td>
-        <td><button id="${element.id}">Editar usuario</button></td>
+        <td><button class="botones-eliminar" id="eliminar${element.id}">Eliminar</button>
+          <button class="botones-editar" id="editar${element.id}">Editar</button>
+        </td>
       </tr>
       `
-    },`
+  }, `
       <tr>
         <th>Nombre</th>
         <th>Email</th>
@@ -35,19 +47,11 @@ const tablaEnHTML = (data) => {
       </tr>
       `)
 
-    tablaDeUsuarios.innerHTML = tabla;
+  tablaDeUsuarios.innerHTML = tabla;
+  eliminarUsuario()
 }
 
-botonAgregarUsuario.onclick = (e) => {
-    e.preventDefault();
-    let nuevoUsuario = {
-        fullname: inputNombreUsuario,
-        email: inputEmailUsuario,
-        address: inputDireccionUsuario,
-        phone: inputNombreUsuario,
-    }
-    crearNuevoUsuarioAPI(nuevoUsuario)
-}
+
 
 const crearNuevoUsuarioAPI = (user) => {
   fetch("https://601da02bbe5f340017a19d60.mockapi.io/users", {
@@ -57,7 +61,51 @@ const crearNuevoUsuarioAPI = (user) => {
       "Content-Type": "application/json"
     }
   }).then((res) => res.json())
-  .then((data) => {
-    console.log(data)
+}
+
+
+botonAgregarUsuario.onclick = (e) => {
+  e.preventDefault();
+  let nuevoUsuario = {
+    fullname: inputNombreUsuario.value,
+    email: inputEmailUsuario.value,
+    address: inputDireccionUsuario.value,
+    phone: inputTelefonoUsuario.value,
+  }
+  crearNuevoUsuarioAPI(nuevoUsuario)
+  informacionApi()
+}
+
+
+
+
+
+const eliminarUsuarioEnLaApi = (id) => {
+  fetch(`https://601da02bbe5f340017a19d60.mockapi.io/users/${id}`, {
+  method: "DELETE", 
+  headers: {
+    "Content-Type": "application/json"
+  }
+}).then((res) => res.json())
+.then((data) => {
+  console.log(data)
+})
+
+}
+
+
+const eliminarUsuario = () => {
+  let listaBotonesEliminar = actualizarListaBotonesEliminar();
+  listaBotonesEliminar.forEach((boton)=> {
+    boton.onclick = () => {
+      let cantidadLetrasPalabraEliminar = 8;
+      let botonEliminarId = boton.id;
+      let idLimpio = botonEliminarId.slice(cantidadLetrasPalabraEliminar)
+      eliminarUsuarioEnLaApi(idLimpio)
+      informacionApi()
+    }
   })
 }
+
+
+informacionApi()
