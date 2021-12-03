@@ -61,6 +61,9 @@ const crearNuevoUsuarioAPI = (user) => {
       "Content-Type": "application/json"
     }
   }).then((res) => res.json())
+  .then ((data)=> {
+    informacionApi()
+  })
 }
 
 
@@ -73,10 +76,7 @@ botonAgregarUsuario.onclick = (e) => {
     phone: inputTelefonoUsuario.value,
   }
   crearNuevoUsuarioAPI(nuevoUsuario)
-  informacionApi()
 }
-
-
 
 
 
@@ -88,7 +88,7 @@ const eliminarUsuarioEnLaApi = (id) => {
   }
 }).then((res) => res.json())
 .then((data) => {
-  console.log(data)
+  informacionApi()
 })
 
 }
@@ -102,7 +102,6 @@ const eliminarUsuario = () => {
       let botonEliminarId = boton.id;
       let idLimpio = botonEliminarId.slice(cantidadLetrasPalabraEliminar)
       eliminarUsuarioEnLaApi(idLimpio)
-      informacionApi()
     }
   })
 }
