@@ -5,7 +5,8 @@ const inputEmailUsuario = document.getElementById("user-mail");
 const inputDireccionUsuario = document.getElementById("user-address");
 const inputTelefonoUsuario = document.getElementById("user-number");
 const tablaDeUsuarios = document.getElementById("tabla-usuarios");
-
+const textoAdvertencia = document.querySelector(".texto-advertencia");
+const camposRequeridos = document.querySelectorAll(".requerido")
 
 
 const actualizarListaBotonesEliminar = () => {
@@ -69,13 +70,23 @@ const crearNuevoUsuarioAPI = (user) => {
 
 botonAgregarUsuario.onclick = (e) => {
   e.preventDefault();
-  let nuevoUsuario = {
-    fullname: inputNombreUsuario.value,
-    email: inputEmailUsuario.value,
-    address: inputDireccionUsuario.value,
-    phone: inputTelefonoUsuario.value,
-  }
-  crearNuevoUsuarioAPI(nuevoUsuario)
+
+  camposRequeridos.forEach((input)=> {
+    if(input.value.length > 0) {
+      let nuevoUsuario = {
+        fullname: inputNombreUsuario.value,
+        email: inputEmailUsuario.value,
+        address: inputDireccionUsuario.value,
+        phone: inputTelefonoUsuario.value,
+      }
+      crearNuevoUsuarioAPI(nuevoUsuario)
+    }
+
+    else if (input.value.length == 0) {
+      textoAdvertencia.classList.remove("ocultar")
+    }
+  })
+  
 }
 
 
@@ -105,6 +116,14 @@ const eliminarUsuario = () => {
     }
   })
 }
+
+
+camposRequeridos.forEach ((input)=> {
+  input.oninput = () => {
+    textoAdvertencia.classList.add("ocultar")
+  }
+})
+
 
 
 informacionApi()

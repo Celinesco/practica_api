@@ -1,5 +1,5 @@
 $color-principal:rgb(128, 38, 128);
-$color-secundario: rgba(255, 217, 195, 0.925);
+$color-secundario: rgba(252, 234, 224, 0.925);
 $color-fuente: rgb(71, 70, 70);
 $borde-contenedores: 1px solid black;
 
@@ -40,7 +40,16 @@ input {
     height: 25px;
 }
 
+.ocultar {
+    display: none;
+}
 
+.texto-advertencia {
+    color: red;
+    padding: 0;
+    margin: 5px;
+    font-size: 15px;
+}
 
 table {
     border-spacing: 5px;
@@ -63,15 +72,23 @@ tr:nth-child(odd) {
 } 
 
 
-#button-submit {
-    background-color: black;
-    color: white
+button {
+    cursor: pointer;
+}
 
+
+#boton-submit {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
 }
   
 .acciones {
     background-color: transparent;
     border: none;
     color: blue;
-    cursor: pointer;
 }
