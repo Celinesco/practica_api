@@ -13,7 +13,13 @@ $borde-contenedores: 1px solid black;
   }
 
 body {
-    @include flex-centrar($direccion: column)
+    @include flex-centrar($direccion: column);
+    
+}
+
+.oscurecer {
+    background-color: rgb(180, 180, 180);
+    opacity: 0.2;
 }
 
 .contenedor-formulario {
@@ -92,3 +98,11 @@ button {
     border: none;
     color: blue;
 }
+
+.posicion {
+    position: absolute;
+    top: 30%;
+    z-index: 5;
+}
+
+

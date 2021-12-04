@@ -4,6 +4,10 @@ body {
   justify-content: center;
   align-items: center; }
 
+.oscurecer {
+  background-color: #b4b4b4;
+  opacity: 0.2; }
+
 .contenedor-formulario {
   background-color: rgba(252, 234, 224, 0.925);
   border: 1px solid black;
@@ -70,5 +74,11 @@ button {
   background-color: transparent;
   border: none;
   color: blue; }
+
+.posicion {
+  position: absolute;
+  top: 30%;
+  z-index: 10;
+  transition: position 0.8s; }
 
 /*# sourceMappingURL=style.css.map */
